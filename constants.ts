@@ -28,3 +28,12 @@ export const OS_OPTIONS: ServerOption[] = [
   { id: 'os-centos', label: 'CentOS Stream 9', description: 'Community-driven enterprise OS', price: 5 },
   { id: 'os-windows', label: 'Windows Server', description: 'For Windows-specific applications', price: 25 },
 ];
+
+export const SOFTWARE_OPTIONS: ServerOption[] = [
+    { id: 'sw-none', label: 'None', description: 'A clean OS installation', price: 0 },
+    { id: 'sw-retail', label: 'Retail Suite', description: 'Inventory, POS, and customer management', price: 50 },
+    { id: 'sw-ecommerce', label: 'E-commerce Pack', description: 'Pre-configured platform for online stores', price: 45 },
+    { id: 'sw-business', label: 'Business & POS', description: 'Tools for small businesses and point-of-sale', price: 40 },
+    { id: 'sw-database', label: 'Database Server', description: 'Optimized for high-performance databases', price: 30 },
+    { id: 'sw-blockchain', label: 'Blockchain Node', description: 'Run a full node for a public blockchain', price: 20 },
+];

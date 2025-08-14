@@ -1,11 +1,12 @@
+
 import React, { useState, useMemo, useCallback } from 'react';
 import { ServerConfiguration, Category, ServerOption } from './types';
-import { CPU_OPTIONS, RAM_OPTIONS, STORAGE_OPTIONS, OS_OPTIONS } from './constants';
+import { CPU_OPTIONS, RAM_OPTIONS, STORAGE_OPTIONS, OS_OPTIONS, SOFTWARE_OPTIONS } from './constants';
 import { generateConfigurationSummary } from './services/geminiService';
 import OptionSelector from './components/OptionSelector';
 import ServerVisualization from './components/ServerVisualization';
 import Summary from './components/Summary';
-import { CpuIcon, RamIcon, StorageIcon, OsIcon } from './components/IconComponents';
+import { CpuIcon, RamIcon, StorageIcon, OsIcon, SoftwareIcon } from './components/IconComponents';
 
 const App: React.FC = () => {
   const [configuration, setConfiguration] = useState<ServerConfiguration>({
@@ -13,6 +14,7 @@ const App: React.FC = () => {
     [Category.RAM]: RAM_OPTIONS[0],
     [Category.STORAGE]: STORAGE_OPTIONS[0],
     [Category.OS]: OS_OPTIONS[0],
+    [Category.SOFTWARE]: SOFTWARE_OPTIONS[0],
   });
 
   const [aiSummary, setAiSummary] = useState('');
@@ -94,6 +96,13 @@ const App: React.FC = () => {
               options={OS_OPTIONS}
               selectedOption={configuration[Category.OS]}
               onSelect={(option) => handleOptionSelect(Category.OS, option)}
+            />
+            <OptionSelector
+              title="Software & Apps"
+              icon={<SoftwareIcon className="w-6 h-6" />}
+              options={SOFTWARE_OPTIONS}
+              selectedOption={configuration[Category.SOFTWARE]}
+              onSelect={(option) => handleOptionSelect(Category.SOFTWARE, option)}
             />
           </div>
 

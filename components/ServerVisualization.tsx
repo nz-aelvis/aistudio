@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { ServerConfiguration, Category } from '../types';
-import { CpuIcon, RamIcon, StorageIcon, OsIcon } from './IconComponents';
+import { CpuIcon, RamIcon, StorageIcon, OsIcon, SoftwareIcon } from './IconComponents';
 
 interface ServerVisualizationProps {
   configuration: ServerConfiguration;
@@ -47,6 +47,12 @@ const ServerVisualization: React.FC<ServerVisualizationProps> = ({ configuration
                 value={configuration[Category.OS].label}
                 icon={<OsIcon className="w-5 h-5"/>}
                 color="bg-red-500/20 text-red-300"
+            />
+             <VisualizationBar 
+                label="Software / App"
+                value={configuration[Category.SOFTWARE].label}
+                icon={<SoftwareIcon className="w-5 h-5"/>}
+                color="bg-yellow-500/20 text-yellow-300"
             />
         </div>
     </div>

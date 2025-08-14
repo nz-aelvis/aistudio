@@ -11,6 +11,7 @@ export enum Category {
   RAM = "RAM",
   STORAGE = "Storage",
   OS = "OS",
+  SOFTWARE = "Software",
 }
 
 export interface ServerConfiguration {
@@ -18,4 +19,5 @@ export interface ServerConfiguration {
   [Category.RAM]: ServerOption;
   [Category.STORAGE]: ServerOption;
   [Category.OS]: ServerOption;
+  [Category.SOFTWARE]: ServerOption;
 }

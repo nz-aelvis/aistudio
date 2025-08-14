@@ -1,3 +1,4 @@
+
 import { GoogleGenAI, GenerateContentResponse } from "@google/genai";
 import { ServerConfiguration, Category } from '../types';
 
@@ -10,9 +11,13 @@ if (!API_KEY) {
 const ai = new GoogleGenAI({ apiKey: API_KEY });
 
 export const generateConfigurationSummary = async (config: ServerConfiguration): Promise<string> => {
+  const softwareInfo = config[Category.SOFTWARE].id !== 'sw-none' 
+      ? `- Software: ${config[Category.SOFTWARE].label} (${config[Category.SOFTWARE].description})`
+      : '- Software: None (Clean Install)';
+
   const prompt = `
     Based on the following cloud server configuration, generate a creative server name and a professional, brief summary of its ideal use case.
-    The summary should be concise (2-3 sentences) and highlight the strengths of this particular build.
+    The summary should be concise (2-3 sentences) and highlight the strengths of this particular build, considering the hardware and any pre-installed software.
     Format the output as a simple string, with the name first, followed by a newline, and then the summary.
 
     Configuration:
@@ -20,10 +25,11 @@ export const generateConfigurationSummary = async (config: ServerConfiguration):
     - RAM: ${config[Category.RAM].label} (${config[Category.RAM].description})
     - Storage: ${config[Category.STORAGE].label} (${config[Category.STORAGE].description})
     - OS: ${config[Category.OS].label} (${config[Category.OS].description})
+    ${softwareInfo}
 
     Example Output:
-    QuantumLeap Workstation
-    This configuration is a powerhouse for data-intensive tasks. With its high-speed NVMe storage and ample RAM, it's perfectly suited for running large databases, real-time analytics platforms, and demanding enterprise applications.
+    RetailReady Powerhouse
+    Engineered for retail operations, this server combines robust processing power with a pre-configured Retail Suite. It's an all-in-one solution for managing inventory, point-of-sale transactions, and customer data with high efficiency and reliability.
   `;
 
   try {
