@@ -1,0 +1,5 @@
+{
+  "name": "Cloud Server Configurator",
+  "description": "An interactive tool to visually configure a virtual cloud server. Select components like CPU, RAM, Storage, and Operating System, and get an AI-generated summary of your build.",
+  "requestFramePermissions": []
+}
